@@ -9,18 +9,18 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class Action_Type extends $pb.ProtobufEnum {
-  static const Action_Type Increase = Action_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Increase');
-  static const Action_Type Decrease = Action_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Decrease');
+class CounterRequest_Type extends $pb.ProtobufEnum {
+  static const CounterRequest_Type Increase = CounterRequest_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Increase');
+  static const CounterRequest_Type Decrease = CounterRequest_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Decrease');
 
-  static const $core.List<Action_Type> values = <Action_Type> [
+  static const $core.List<CounterRequest_Type> values = <CounterRequest_Type> [
     Increase,
     Decrease,
   ];
 
-  static final $core.Map<$core.int, Action_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static Action_Type? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, CounterRequest_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static CounterRequest_Type? valueOf($core.int value) => _byValue[value];
 
-  const Action_Type._($core.int v, $core.String n) : super(v, n);
+  const CounterRequest_Type._($core.int v, $core.String n) : super(v, n);
 }
 

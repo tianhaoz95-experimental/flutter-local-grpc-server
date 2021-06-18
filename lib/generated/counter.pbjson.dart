@@ -8,18 +8,18 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use actionDescriptor instead')
-const Action$json = const {
-  '1': 'Action',
+@$core.Deprecated('Use counterRequestDescriptor instead')
+const CounterRequest$json = const {
+  '1': 'CounterRequest',
   '2': const [
-    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.Action.Type', '10': 'type'},
+    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.CounterRequest.Type', '10': 'type'},
     const {'1': 'msg', '3': 2, '4': 1, '5': 9, '10': 'msg'},
   ],
-  '4': const [Action_Type$json],
+  '4': const [CounterRequest_Type$json],
 };
 
-@$core.Deprecated('Use actionDescriptor instead')
-const Action_Type$json = const {
+@$core.Deprecated('Use counterRequestDescriptor instead')
+const CounterRequest_Type$json = const {
   '1': 'Type',
   '2': const [
     const {'1': 'Increase', '2': 0},
@@ -27,5 +27,15 @@ const Action_Type$json = const {
   ],
 };
 
-/// Descriptor for `Action`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List actionDescriptor = $convert.base64Decode('CgZBY3Rpb24SIAoEdHlwZRgBIAEoDjIMLkFjdGlvbi5UeXBlUgR0eXBlEhAKA21zZxgCIAEoCVIDbXNnIiIKBFR5cGUSDAoISW5jcmVhc2UQABIMCghEZWNyZWFzZRAB');
+/// Descriptor for `CounterRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List counterRequestDescriptor = $convert.base64Decode('Cg5Db3VudGVyUmVxdWVzdBIoCgR0eXBlGAEgASgOMhQuQ291bnRlclJlcXVlc3QuVHlwZVIEdHlwZRIQCgNtc2cYAiABKAlSA21zZyIiCgRUeXBlEgwKCEluY3JlYXNlEAASDAoIRGVjcmVhc2UQAQ==');
+@$core.Deprecated('Use counterResponseDescriptor instead')
+const CounterResponse$json = const {
+  '1': 'CounterResponse',
+  '2': const [
+    const {'1': 'msg', '3': 1, '4': 1, '5': 9, '10': 'msg'},
+  ],
+};
+
+/// Descriptor for `CounterResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List counterResponseDescriptor = $convert.base64Decode('Cg9Db3VudGVyUmVzcG9uc2USEAoDbXNnGAEgASgJUgNtc2c=');

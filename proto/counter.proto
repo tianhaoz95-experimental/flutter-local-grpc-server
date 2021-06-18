@@ -1,10 +1,18 @@
 syntax = "proto3";
 
-message Action {
+message CounterRequest {
     enum Type {
         Increase = 0;
         Decrease = 1;
     };
     Type type = 1;
     string msg = 2;
+}
+
+message CounterResponse {
+    string msg = 1;
+}
+
+service CounterServer {
+    rpc ExecAction(CounterRequest) returns (CounterResponse) {}
 }
