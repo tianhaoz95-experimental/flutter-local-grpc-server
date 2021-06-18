@@ -9,6 +9,8 @@
 		"dart-code.flutter"
 	],
 	"runArgs": [
+		"--net",
+		"host",
 		"--device",
 		"/dev/kvm",
 		"--device",
