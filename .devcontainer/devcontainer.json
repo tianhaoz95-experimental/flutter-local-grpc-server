@@ -13,9 +13,14 @@
 		"/dev/kvm",
 		"--device",
 		"/dev/dri:/dev/dri",
+		"-p",
+		"42000:42000",
+		"-p",
+		"8090:8090",
 		"-v",
 		"/tmp/.X11-unix:/tmp/.X11-unix",
 		"-e",
 		"DISPLAY"
-	]
+	],
+	"postCreateCommand": "git config --global user.name ${localEnv:GIT_ACTOR_NAME} && git config --global user.email ${localEnv:GIT_ACTOR_EMAIL}"
 }
