@@ -1,7 +1,9 @@
+syntax = "proto3";
+
 message Action {
     enum Type {
-        Increase,
-        Decrease
+        Increase = 0;
+        Decrease = 1;
     };
     Type type = 1;
     string msg = 2;
