@@ -1,0 +1,21 @@
+{
+	"name": "Flutter",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"settings": {},
+	"extensions": [
+		"dart-code.dart-code",
+		"dart-code.flutter"
+	],
+	"runArgs": [
+		"--device",
+		"/dev/kvm",
+		"--device",
+		"/dev/dri:/dev/dri",
+		"-v",
+		"/tmp/.X11-unix:/tmp/.X11-unix",
+		"-e",
+		"DISPLAY"
+	]
+}
