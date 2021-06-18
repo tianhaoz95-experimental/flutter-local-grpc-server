@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     startIsolates();
-    channel = grpc.ClientChannel('10.0.2.2',
+    channel = grpc.ClientChannel('localhost',
         port: 50051,
         options: const grpc.ChannelOptions(
             credentials: grpc.ChannelCredentials.insecure()));
