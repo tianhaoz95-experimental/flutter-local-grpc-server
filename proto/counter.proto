@@ -1,0 +1,8 @@
+message Action {
+    enum Type {
+        Increase,
+        Decrease
+    };
+    Type type = 1;
+    string msg = 2;
+}
