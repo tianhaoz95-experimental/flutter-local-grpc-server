@@ -1,4 +1,4 @@
-# Flutter Local gRPC Server
+# Flutter Local gRPC Server Example
 
 ## Getting Started
 
