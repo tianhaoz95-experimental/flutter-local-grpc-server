@@ -6,7 +6,6 @@ message CounterRequest {
         Decrease = 1;
     };
     Type type = 1;
-    string msg = 2;
 }
 
 message CounterResponse {

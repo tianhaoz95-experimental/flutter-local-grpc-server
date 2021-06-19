@@ -13,7 +13,6 @@ const CounterRequest$json = const {
   '1': 'CounterRequest',
   '2': const [
     const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.CounterRequest.Type', '10': 'type'},
-    const {'1': 'msg', '3': 2, '4': 1, '5': 9, '10': 'msg'},
   ],
   '4': const [CounterRequest_Type$json],
 };
@@ -28,7 +27,7 @@ const CounterRequest_Type$json = const {
 };
 
 /// Descriptor for `CounterRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List counterRequestDescriptor = $convert.base64Decode('Cg5Db3VudGVyUmVxdWVzdBIoCgR0eXBlGAEgASgOMhQuQ291bnRlclJlcXVlc3QuVHlwZVIEdHlwZRIQCgNtc2cYAiABKAlSA21zZyIiCgRUeXBlEgwKCEluY3JlYXNlEAASDAoIRGVjcmVhc2UQAQ==');
+final $typed_data.Uint8List counterRequestDescriptor = $convert.base64Decode('Cg5Db3VudGVyUmVxdWVzdBIoCgR0eXBlGAEgASgOMhQuQ291bnRlclJlcXVlc3QuVHlwZVIEdHlwZSIiCgRUeXBlEgwKCEluY3JlYXNlEAASDAoIRGVjcmVhc2UQAQ==');
 @$core.Deprecated('Use counterResponseDescriptor instead')
 const CounterResponse$json = const {
   '1': 'CounterResponse',

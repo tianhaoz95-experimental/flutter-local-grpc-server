@@ -16,21 +16,16 @@ export 'counter.pbenum.dart';
 class CounterRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CounterRequest', createEmptyInstance: create)
     ..e<CounterRequest_Type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: CounterRequest_Type.Increase, valueOf: CounterRequest_Type.valueOf, enumValues: CounterRequest_Type.values)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msg')
     ..hasRequiredFields = false
   ;
 
   CounterRequest._() : super();
   factory CounterRequest({
     CounterRequest_Type? type,
-    $core.String? msg,
   }) {
     final _result = create();
     if (type != null) {
       _result.type = type;
-    }
-    if (msg != null) {
-      _result.msg = msg;
     }
     return _result;
   }
@@ -63,15 +58,6 @@ class CounterRequest extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
   void clearType() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get msg => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set msg($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasMsg() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMsg() => clearField(2);
 }
 
 class CounterResponse extends $pb.GeneratedMessage {

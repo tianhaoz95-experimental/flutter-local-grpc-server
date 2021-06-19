@@ -73,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _sendRequest(CounterRequest_Type type) async {
     CounterRequest req = CounterRequest();
     req.type = type;
-    req.msg = "hello";
     CounterResponse res = _remote
         ? await _remoteClient.execAction(req)
         : await _localClient.execAction(req);
