@@ -76,15 +76,20 @@ class CounterRequest extends $pb.GeneratedMessage {
 
 class CounterResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CounterResponse', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msg')
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cnt', $pb.PbFieldType.O3)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msg')
     ..hasRequiredFields = false
   ;
 
   CounterResponse._() : super();
   factory CounterResponse({
+    $core.int? cnt,
     $core.String? msg,
   }) {
     final _result = create();
+    if (cnt != null) {
+      _result.cnt = cnt;
+    }
     if (msg != null) {
       _result.msg = msg;
     }
@@ -112,12 +117,21 @@ class CounterResponse extends $pb.GeneratedMessage {
   static CounterResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get msg => $_getSZ(0);
+  $core.int get cnt => $_getIZ(0);
   @$pb.TagNumber(1)
-  set msg($core.String v) { $_setString(0, v); }
+  set cnt($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasMsg() => $_has(0);
+  $core.bool hasCnt() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMsg() => clearField(1);
+  void clearCnt() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get msg => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set msg($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMsg() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMsg() => clearField(2);
 }
 

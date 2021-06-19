@@ -1,15 +1,28 @@
+import 'dart:developer';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_local_grpc_server/generated/counter.pb.dart';
 import 'package:grpc/grpc.dart' as grpc;
 import 'package:flutter_local_grpc_server/generated/counter.pbgrpc.dart';
 
 class CounterService extends CounterServerServiceBase {
+  int count = 0;
+
   @override
   Future<CounterResponse> execAction(
       grpc.ServiceCall call, CounterRequest request) async {
     CounterResponse res = CounterResponse();
-    res.msg = "ack";
+    if (request.type == CounterRequest_Type.Increase) {
+      count += 1;
+      res.msg = "ack";
+    } else if (request.type == CounterRequest_Type.Decrease) {
+      count -= 1;
+      res.msg = "ack";
+    } else {
+      res.msg = "err";
+    }
+    res.cnt = count;
     return res;
   }
 }
@@ -75,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     CounterResponse res = await client.execAction(req);
     print(res.msg);
     setState(() {
-      _counter++;
+      _counter = res.cnt;
     });
   }
 

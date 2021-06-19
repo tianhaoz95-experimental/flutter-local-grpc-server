@@ -10,7 +10,8 @@ message CounterRequest {
 }
 
 message CounterResponse {
-    string msg = 1;
+    int32 cnt = 1;
+    string msg = 2;
 }
 
 service CounterServer {
