@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter gRPC Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -30,8 +30,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
+
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -69,16 +71,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _sendRequest(CounterRequest_Type type) async {
-    CounterRequest req = CounterRequest();
-    req.type = type;
-    CounterResponse res = _remote
-        ? await _remoteClient.execAction(req)
-        : await _localClient.execAction(req);
-    print(res.msg);
-    setState(() {
-      _counter = res.cnt;
-      _msg = res.msg;
-    });
+    try {
+      CounterRequest req = CounterRequest();
+      req.type = type;
+      CounterResponse res = _remote
+          ? await _remoteClient.execAction(req)
+          : await _localClient.execAction(req);
+      print(res.msg);
+      setState(() {
+        _counter = res.cnt;
+        _msg = res.msg;
+      });
+    } catch (err) {
+      setState(() {
+        _msg = 'Error: ${err.toString()}';
+      });
+    }
   }
 
   @override
@@ -89,18 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Text(
-              'Response: $_msg',
-            ),
+            Text('Counter: $_counter'),
+            Divider(),
+            Text(_msg),
           ],
         ),
       ),
@@ -115,14 +115,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   _remote = val;
                 });
               }),
-          SizedBox(
-            height: 10,
-          ),
           FloatingActionButton(
             onPressed: () {
               _sendRequest(CounterRequest_Type.Increase);
             },
-            tooltip: 'Increment',
             child: Icon(Icons.exposure_plus_1),
           ),
           SizedBox(
@@ -132,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               _sendRequest(CounterRequest_Type.Decrease);
             },
-            tooltip: 'Increment',
             child: Icon(Icons.exposure_neg_1),
           ),
         ],
