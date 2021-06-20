@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Icon(Icons.exposure_neg_1),
           ),
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
