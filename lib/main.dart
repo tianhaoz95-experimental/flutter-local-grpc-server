@@ -1,16 +1,8 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_local_grpc_server/generated/counter.pb.dart';
 import 'package:flutter_local_grpc_server/service_impl.dart';
 import 'package:grpc/grpc.dart' as grpc;
 import 'package:flutter_local_grpc_server/generated/counter.pbgrpc.dart';
-
-void runCounterService(String msg) async {
-  final server = grpc.Server([CounterService("local")]);
-  await server.serve(port: 50051);
-  print('Server listening...');
-}
 
 void main() {
   runApp(MyApp());
@@ -40,7 +32,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  String _msg = 'Not initialized';
+  bool _init = true;
+  String _msg = 'Not started';
   bool _remote = false;
   List isolates = [];
   late grpc.ClientChannel _localChannel;
@@ -50,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void initState() {
     super.initState();
-    startIsolates();
     _localChannel = grpc.ClientChannel('localhost',
         port: 50051,
         options: const grpc.ChannelOptions(
@@ -65,9 +57,17 @@ class _MyHomePageState extends State<MyHomePage> {
         options: grpc.CallOptions(timeout: Duration(seconds: 30)));
   }
 
-  void startIsolates() async {
-    isolates.add(await Isolate.spawn(runCounterService, "start"));
-    print("Server launched");
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    configureLocalService();
+  }
+
+  void configureLocalService() async {
+    final server = grpc.Server([CounterService("local")]);
+    await server.serve(port: 50051);
+    setState(() {
+      _init = false;
+    });
   }
 
   void _sendRequest(CounterRequest_Type type) async {
@@ -98,6 +98,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: <Widget>[
+            _init
+                ? Text("Initializing local service...")
+                : Text('Local service initialized'),
+            Divider(),
             Text('Counter: $_counter'),
             Divider(),
             Text(_msg),
